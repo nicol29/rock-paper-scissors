@@ -60,5 +60,5 @@ function gameLogic() {
     }
 }
 
-gameLogic();
+//gameLogic();
 
