@@ -3,3 +3,8 @@
     height: 100px;
     width: 100px;
 }
+
+.container {
+    display: flex;
+    gap: 15px;
+}
