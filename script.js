@@ -10,15 +10,25 @@ function getComputerChoice(e) {
         computerChoice = "scissors"
     }
 
-    //return computerChoice;
-    console.log(e);
+    return computerChoice;
 }
 
 
-function playerSelection(selection) {
-    let playerChoice = selection;
+function playerSelection(targetDiv) {
+    const rock = document.querySelector(".rock");
+    const paper = document.querySelector(".paper");
+    const scissors = document.querySelector(".scissors");
+    let playerChoice;
     
-    return playerChoice;
+    if(targetDiv == rock){
+        playerChoice = "rock";
+    } else if (targetDiv == paper){
+        playerChoice = "paper"
+    } else{
+        playerChoice = "scissors"
+    }
+
+    console.log(playerChoice);
 }
 
 
@@ -67,7 +77,7 @@ function gameLogic(playerChoice) {
 const availableGamePicks = document.querySelectorAll(".selection");
 
 
-availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (event) =>{
-    console.log(getComputerChoice(event));
+availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (e) =>{
+    playerSelection(e.target);
 }));
 
