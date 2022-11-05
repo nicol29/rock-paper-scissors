@@ -1,24 +1,12 @@
-let userClicks = 0;
 let playerScore = 0;
 let computerScore = 0;
 let didWin = false;
+
 const availableGamePicks = document.querySelectorAll(".selection");
 
 
 availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (e) =>{
-    if(!didWin){
-        if(playerScore == 5 || computerScore == 5){
-            if(playerScore > computerScore){
-                console.log("You won!");
-                didWin = true;
-            } else{
-                console.log("You lost!");
-                didWin = true;
-            }
-        } else{
-            playerSelection(e.target);
-        }
-    }
+    if(!didWin) playerSelection(e.target);
 
     return;
 }));
@@ -57,8 +45,6 @@ function playerSelection(targetDiv) {
 
 
 function gameLogic(playerChoice) {
-    let result = false;
-
     let computerChoice = getComputerChoice();
 
     if(computerChoice == "rock" && playerChoice == "scissors"){
@@ -75,5 +61,15 @@ function gameLogic(playerChoice) {
     } else{
         console.log("You won, computer chose " + computerChoice);
         playerScore ++;
+    }
+
+    if(playerScore == 5 || computerScore == 5){
+        if(playerScore > computerScore){
+            console.log("You won!");
+            didWin = true;
+        } else{
+            console.log("You lost!");
+            didWin = true;
+        }
     }
 }
