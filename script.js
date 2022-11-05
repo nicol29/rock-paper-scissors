@@ -1,3 +1,28 @@
+let userClicks = 0;
+let playerScore = 0;
+let computerScore = 0;
+let didWin = false;
+const availableGamePicks = document.querySelectorAll(".selection");
+
+
+availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (e) =>{
+    if(!didWin){
+        if(playerScore == 5 || computerScore == 5){
+            if(playerScore > computerScore){
+                console.log("You won!");
+                didWin = true;
+            } else{
+                console.log("You lost!");
+                didWin = true;
+            }
+        } else{
+            playerSelection(e.target);
+        }
+    }
+
+    return;
+}));
+
 function getComputerChoice(e) {
     let randomNum = Math.floor(Math.random() * 3);
     let computerChoice;
@@ -17,67 +42,38 @@ function getComputerChoice(e) {
 function playerSelection(targetDiv) {
     const rock = document.querySelector(".rock");
     const paper = document.querySelector(".paper");
-    const scissors = document.querySelector(".scissors");
-    let playerChoice;
+    let playerPick;
     
     if(targetDiv == rock){
-        playerChoice = "rock";
+        playerPick = "rock";
     } else if (targetDiv == paper){
-        playerChoice = "paper"
+        playerPick = "paper"
     } else{
-        playerChoice = "scissors"
+        playerPick = "scissors"
     }
 
-    console.log(playerChoice);
+    gameLogic(playerPick);
 }
 
 
 function gameLogic(playerChoice) {
-    let playerScore = 0;
-    let computerScore = 0;
     let result = false;
 
-    while(!result){
-        let computerChoice = getComputerChoice();
-        let playerChoice = playerChoice();
-        console.log(playerChoice);
+    let computerChoice = getComputerChoice();
 
-        if(computerChoice == "rock" && playerChoice == "scissors"){
-            alert("You lost, computer chose " + computerChoice);
-            computerScore ++;
-        } else if(computerChoice == "paper" && playerChoice == "rock"){
-            alert("You lost, computer chose " + computerChoice);
-            computerScore ++;
-        } else if(computerChoice == "scissors" && playerChoice == "paper"){
-            alert("You lost, computer chose " + computerChoice);
-            computerScore ++;
-        } else if(computerChoice == playerChoice){
-            alert("You and computer drew the same");
-        } else{
-            alert("You won, computer chose " + computerChoice);
-            playerScore ++;
-        }
-
-        if(playerScore == 3){
-            result = true
-        } else if (computerScore == 3){
-            result = true
-        }
-    }
-
-    if(playerScore > computerScore){
-        alert("You won!");
+    if(computerChoice == "rock" && playerChoice == "scissors"){
+        console.log("You lost, computer chose " + computerChoice);
+        computerScore ++;
+    } else if(computerChoice == "paper" && playerChoice == "rock"){
+        console.log("You lost, computer chose " + computerChoice);
+        computerScore ++;
+    } else if(computerChoice == "scissors" && playerChoice == "paper"){
+        console.log("You lost, computer chose " + computerChoice);
+        computerScore ++;
+    } else if(computerChoice == playerChoice){
+        console.log("You and computer drew the same");
     } else{
-        alert("You lost!");
+        console.log("You won, computer chose " + computerChoice);
+        playerScore ++;
     }
 }
-
-//gameLogic();
-
-const availableGamePicks = document.querySelectorAll(".selection");
-
-
-availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (e) =>{
-    playerSelection(e.target);
-}));
-
