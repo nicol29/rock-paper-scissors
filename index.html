@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="container">
-        <div class="rock selection">rock</div>
-        <div class="paper selection">paper</div>
-        <div class="scissors selection">scissors</div>
+    <div class="page-container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="image-container">
+            <img src="./images/rock.png" class="rock selection" alt="A picture of a rock">
+            <img src="./images/paper.png" class="paper selection" alt="A picture of a paper">
+            <img src="./images/scissors.png" class="scissors selection" alt="A picture of a scissors">
+        </div>
+        <div class="results-container">
+            <div>You: <span class="player-score"></span></div>
+            <div>Computer: <span class="pc-score"></span></div>
+        </div>
+        <div class="game-details"></div>
+        <div class="play-again">
+            <button>Play Again?</button>
+        </div>
     </div>
 </body>
 </html>

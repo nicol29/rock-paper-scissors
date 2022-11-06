@@ -1,10 +1,40 @@
+body {
+    background-color: lightgrey;
+    padding: 25px;
+}
+
+.page-container {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Poor Story', cursive;
+    font-size: 50px;
+}
+
 .selection {
     background-color: plum;
     height: 100px;
     width: 100px;
 }
 
-.container {
+.image-container {
     display: flex;
     gap: 15px;
+}
+
+.image-container img {
+    width: 150px;
+    height: auto;
+}
+
+.results-container {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
 }

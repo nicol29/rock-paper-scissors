@@ -1,12 +1,18 @@
 let playerScore = 0;
 let computerScore = 0;
-let didWin = false;
+let finishedGame = false;
 
 const availableGamePicks = document.querySelectorAll(".selection");
+const playerDisplayScore = document.querySelector(".player-score");
+const computerDisplayScore = document.querySelector(".pc-score");
+const winDetails = document.querySelector(".game-details");
+const playAgainButton = document.querySelector("button");
+
+playAgainButton.style.visibility = "hidden";
 
 
 availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (e) =>{
-    if(!didWin) playerSelection(e.target);
+    if(!finishedGame) playerSelection(e.target);
 
     return;
 }));
@@ -46,30 +52,40 @@ function playerSelection(targetDiv) {
 
 function gameLogic(playerChoice) {
     let computerChoice = getComputerChoice();
+    winDetails.innerText = "";
 
     if(computerChoice == "rock" && playerChoice == "scissors"){
-        console.log("You lost, computer chose " + computerChoice);
+        winDetails.innerText = `You lost, computer chose ${computerChoice}.`;
         computerScore ++;
     } else if(computerChoice == "paper" && playerChoice == "rock"){
-        console.log("You lost, computer chose " + computerChoice);
+        winDetails.innerText = `You lost, computer chose ${computerChoice}.`;
         computerScore ++;
     } else if(computerChoice == "scissors" && playerChoice == "paper"){
-        console.log("You lost, computer chose " + computerChoice);
+        winDetails.innerText = `You lost, computer chose ${computerChoice}.`;
         computerScore ++;
     } else if(computerChoice == playerChoice){
-        console.log("You and computer drew the same");
+        winDetails.innerText = `You and computer drew the same.`;
     } else{
-        console.log("You won, computer chose " + computerChoice);
+        winDetails.innerText = `"You won, computer chose ${computerChoice}`;
         playerScore ++;
     }
 
+    let logPS = document.createTextNode(playerScore);
+    let logCS = document.createTextNode(computerScore);
+    playerDisplayScore.innerText = "";
+    computerDisplayScore.innerText = "";
+    playerDisplayScore.appendChild(logPS);
+    computerDisplayScore.appendChild(logCS);
+
     if(playerScore == 5 || computerScore == 5){
+        playAgainButton.style.visibility = "visible"
+        
         if(playerScore > computerScore){
             console.log("You won!");
-            didWin = true;
+            finishedGame = true;
         } else{
             console.log("You lost!");
-            didWin = true;
+            finishedGame = true;
         }
     }
 }
