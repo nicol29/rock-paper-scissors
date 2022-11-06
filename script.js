@@ -11,11 +11,21 @@ const playAgainButton = document.querySelector("button");
 playAgainButton.style.visibility = "hidden";
 
 
-availableGamePicks.forEach(Pick => Pick.addEventListener(("click"), (e) =>{
-    if(!finishedGame) playerSelection(e.target);
-
+availableGamePicks.forEach(Pick => Pick.addEventListener("click", (e) =>{
+    if(!finishedGame)playerSelection(e.target);
     return;
 }));
+
+playAgainButton.addEventListener("click", () => {
+    finishedGame = false;
+    playerScore = 0;
+    computerScore = 0;
+
+    playAgainButton.style.visibility = "hidden";
+    playerDisplayScore.innerText = "";
+    computerDisplayScore.innerText = "";
+    winDetails.innerText = "";
+});
 
 function getComputerChoice(e) {
     let randomNum = Math.floor(Math.random() * 3);
@@ -34,10 +44,13 @@ function getComputerChoice(e) {
 
 
 function playerSelection(targetDiv) {
+    playAgainButton.style.visibility = "hidden";
+
     const rock = document.querySelector(".rock");
     const paper = document.querySelector(".paper");
     let playerPick;
     
+
     if(targetDiv == rock){
         playerPick = "rock";
     } else if (targetDiv == paper){
@@ -52,21 +65,20 @@ function playerSelection(targetDiv) {
 
 function gameLogic(playerChoice) {
     let computerChoice = getComputerChoice();
-    winDetails.innerText = "";
 
     if(computerChoice == "rock" && playerChoice == "scissors"){
-        winDetails.innerText = `You lost, computer chose ${computerChoice}.`;
+        winDetails.innerText = `You lost the round, computer chose ${computerChoice}.`;
         computerScore ++;
     } else if(computerChoice == "paper" && playerChoice == "rock"){
-        winDetails.innerText = `You lost, computer chose ${computerChoice}.`;
+        winDetails.innerText = `You lost the round, computer chose ${computerChoice}.`;
         computerScore ++;
     } else if(computerChoice == "scissors" && playerChoice == "paper"){
-        winDetails.innerText = `You lost, computer chose ${computerChoice}.`;
+        winDetails.innerText = `You lost the round, computer chose ${computerChoice}.`;
         computerScore ++;
     } else if(computerChoice == playerChoice){
         winDetails.innerText = `You and computer drew the same.`;
     } else{
-        winDetails.innerText = `"You won, computer chose ${computerChoice}`;
+        winDetails.innerText = `You won the round, computer chose ${computerChoice}`;
         playerScore ++;
     }
 
@@ -81,10 +93,10 @@ function gameLogic(playerChoice) {
         playAgainButton.style.visibility = "visible"
         
         if(playerScore > computerScore){
-            console.log("You won!");
+            winDetails.innerText = "You won!";
             finishedGame = true;
         } else{
-            console.log("You lost!");
+            winDetails.innerText = "You lost!";
             finishedGame = true;
         }
     }

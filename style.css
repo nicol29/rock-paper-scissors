@@ -38,3 +38,9 @@ h1 {
     display: flex;
     justify-content: space-between;
 }
+
+span,
+.results-container,
+.game-details {
+    font-family: 'Poor Story', cursive;
+}
