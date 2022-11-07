@@ -44,3 +44,8 @@ span,
 .game-details {
     font-family: 'Poor Story', cursive;
 }
+
+.transition {
+    transform: scale(0.9); 
+    transition: 50ms;
+}

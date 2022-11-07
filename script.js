@@ -2,7 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 let finishedGame = false;
 
-const availableGamePicks = document.querySelectorAll(".selection");
+const availableGamepicks = document.querySelectorAll(".selection");
 const playerDisplayScore = document.querySelector(".player-score");
 const computerDisplayScore = document.querySelector(".pc-score");
 const winDetails = document.querySelector(".game-details");
@@ -11,10 +11,14 @@ const playAgainButton = document.querySelector("button");
 playAgainButton.style.visibility = "hidden";
 
 
-availableGamePicks.forEach(Pick => Pick.addEventListener("click", (e) =>{
-    if(!finishedGame)playerSelection(e.target);
+availableGamepicks.forEach(pick => pick.addEventListener("click", (e) =>{
+    if(!finishedGame) playerSelection(e.target);  
+    
     return;
 }));
+
+availableGamepicks.forEach(pick => pick.addEventListener("mousedown", () => pick.classList.add("transition")));
+availableGamepicks.forEach(pick => pick.addEventListener("mouseup", () => pick.classList.remove("transition")));
 
 playAgainButton.addEventListener("click", () => {
     finishedGame = false;
@@ -48,18 +52,18 @@ function playerSelection(targetDiv) {
 
     const rock = document.querySelector(".rock");
     const paper = document.querySelector(".paper");
-    let playerPick;
+    let playerpick;
     
 
     if(targetDiv == rock){
-        playerPick = "rock";
+        playerpick = "rock";
     } else if (targetDiv == paper){
-        playerPick = "paper"
+        playerpick = "paper"
     } else{
-        playerPick = "scissors"
+        playerpick = "scissors"
     }
 
-    gameLogic(playerPick);
+    gameLogic(playerpick);
 }
 
 
