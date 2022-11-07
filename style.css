@@ -15,6 +15,12 @@ body {
 h1 {
     font-family: 'Poor Story', cursive;
     font-size: 50px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-family: 'Poor Story', cursive;
+    font-style: italic;
 }
 
 .selection {
@@ -29,7 +35,7 @@ h1 {
 }
 
 .image-container img {
-    width: 150px;
+    width: 250px;
     height: auto;
 }
 
@@ -37,6 +43,8 @@ h1 {
     width: 400px;
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
+    padding: 15px;
 }
 
 span,
@@ -45,7 +53,17 @@ span,
     font-family: 'Poor Story', cursive;
 }
 
+.game-details {
+    padding: 15px;
+    font-size: 20px;
+}
+
 .transition {
     transform: scale(0.9); 
     transition: 50ms;
+}
+
+button {
+    padding: 7px;
+    margin: 15px 0px 20px 0px;
 }
